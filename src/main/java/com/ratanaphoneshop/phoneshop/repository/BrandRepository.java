@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ratanaphoneshop.phoneshop.entity.Brand;
 
-@Repository // new version no need to use 
+@Repository // new version no need to create anotation
 public interface BrandRepository extends JpaRepository<Brand, Integer>{
 
 }
