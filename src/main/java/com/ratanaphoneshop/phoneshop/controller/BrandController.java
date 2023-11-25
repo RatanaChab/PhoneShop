@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ratanaphoneshop.phoneshop.dto.BrandDTO;
 import com.ratanaphoneshop.phoneshop.entity.Brand;
+import com.ratanaphoneshop.phoneshop.mapper.BrandMapper;
 import com.ratanaphoneshop.phoneshop.service.BrandService;
-import com.ratanaphoneshop.phoneshop.util.Mapper;
 
 @RestController
 @RequestMapping("brands")
@@ -24,22 +24,24 @@ public class BrandController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO){
-		Brand brand = Mapper.toBrand(brandDTO);
+		Brand brand = BrandMapper.INSTANCE.toBrand(brandDTO);
 		brand = brandService.create(brand);
-		return ResponseEntity.ok(Mapper.toBrandDTO(brand));
+//		brand = BrandMapper.INSTANCE.toBrand(brandDTO);
+		return ResponseEntity.ok(brand);
 //		return ResponseEntity.ok(brand);
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandid){
 		Brand brand = brandService.getById(brandid);
-		return ResponseEntity.ok(Mapper.toBrandDTO(brand));
+//		return ResponseEntity.ok(Mapper.toBrandDTO(brand));
+		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
 	}
 	
 	@PutMapping("{id}")
 	public ResponseEntity<?> updateOneBrand(@PathVariable("id") Integer brandid, @RequestBody BrandDTO brandDTO){
-		Brand brand = Mapper.toBrand(brandDTO);
+		Brand brand = BrandMapper.INSTANCE.toBrand(brandDTO);
 		Brand updateBrand = brandService.updateById(brandid, brand);
-		return ResponseEntity.ok(Mapper.toBrandDTO(updateBrand));
+		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(updateBrand));
 	}
 }
