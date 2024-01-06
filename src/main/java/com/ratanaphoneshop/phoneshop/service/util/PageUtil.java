@@ -1,4 +1,4 @@
-package com.ratanaphoneshop.phoneshop.util;
+package com.ratanaphoneshop.phoneshop.service.util;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

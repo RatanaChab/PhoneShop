@@ -29,6 +29,7 @@ public class BrandServiceImp implements BrandService{
 	
 	@Autowired
 	private final BrandRepository brandRepository;
+	private BrandService brandService;
 	
 	@Override
 	public Brand create(Brand brand) {
